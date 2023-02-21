@@ -1,1 +1,1 @@
-# aporophobia
+# Aporophobia
