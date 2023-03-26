@@ -1,61 +1,32 @@
+
+
 from mesa.space import MultiGrid
-from mesa.model import Model
-
 from typing import Collection, Dict, List, Tuple
-
+import random
+import numpy as np
+import pandas as pd
+N = 5
 
 class DistrictGrid(MultiGrid):
-    """A grid representing a district with buildings of different types.
-
-    Attributes
-    ----------
-    name : str
-    locations : Dict[str, List[Tuple[int, int]]]
-        Map of locations of buildings.
-
-    """
     name: str
     locations: Dict[str, List[Tuple[int, int]]]
     __busy_positions: List[Tuple[int, int]]
        
     def __init__(self, name: str, width: int, height: int, torus: bool, \
     locations: Dict[str, List[Tuple[int, int]]]) -> None:
-        """Create a new district grid.
-
-        Parameters
-        ----------
-        name : str
-        width : int
-        height : int
-        torus : bool
-        locations : Dict[str, List[Tuple[int, int]]]
-            Map of locations.
-
-        Raises
-        ------
-        ValueError
-            if the locations are not consistent.
-        
-        See Also
-        --------
-        mesa.space.MultiGrid
-
-        """
         super().__init__(width, height, torus)
         self.name = name
         self.__busy_positions = []
         self.__check_consistent_locations(width, height, locations)
         self.locations = locations
-
-
+        print(self.__busy_positions)
+    
     def __check_consistent_locations(
         self,
         width: int,
         height: int,
         locations: Dict[str, List[Tuple[int, int]]]
     ) -> None:
-        """Check that the locations are consistent with grid size and among
-        themselves."""
         for l in locations.values():
             for x, y in l:
                 if x<0 or x>width or y<0 or y>height:
@@ -66,51 +37,12 @@ class DistrictGrid(MultiGrid):
                 self.__busy_positions.append((x, y))
 
     def has_any_building(self, x: int, y: int) -> bool:
-        """Check if some location has a building of any type.
-
-        Parameters
-        ----------
-        x : int
-        y : int
-
-        Returns
-        -------
-        bool
-        
-        """
         return (x, y) in self.__busy_positions
     
     def has_building(self, type: str, x: int, y: int) -> bool:
-        """Check if some location has a building of a given type.
-
-        Parameters
-        ----------
-        type : str
-        x : int
-        y : int
-
-        Returns
-        -------
-        bool
-        
-        """
         return (x, y) in self.locations[type]
     
     def add_location(self, type: str, x: int, y:int) -> None:
-        """Set a location as containing a building of some type.
-
-        Parameters
-        ----------
-        type : str
-        x : int
-        y : int
-
-        Raises
-        ------
-        ValueError
-            If the input location is already busy.
-            
-        """
         if (x, y) in self.__busy_positions:
             raise ValueError(f"position ({x, y}) is already busy")
         try:
@@ -118,32 +50,21 @@ class DistrictGrid(MultiGrid):
         except KeyError:
             self.locations[type] = [(x, y)]
         self.__busy_positions.append((x, y))
+    
+    def generate_tuples(self, N, x_range, y_range):
+        tuples = list()
+        while len(tuples) < N:
+            x = random.randint(x_range[0], x_range[1])
+            y = random.randint(y_range[0], y_range[1])
+            t = (x, y)
+            if t in self.__busy_positions:
+                continue
+            if t in tuples:
+                continue
+            tuples.append(t)
+        return tuples
 
-
-class CityModel(Model):
-    """A model representing a city as a collection of districts.
-
-    Attributes
-    ----------
-    name : str
-    districts : Dict[str, DistrictGrid]
-
-    See Also
-    --------
-    mesa.model.Model
-
-    """
-    name: str
-    districts: Dict[str, DistrictGrid]
-
-    def __init__(self, name: str, districts: Collection[DistrictGrid]) -> None:
-        """Generate a new city model.
-
-        Parameters
-        ----------
-        name : str
-        districts : Collection[DistrictGrid]
-
-        """
-        self.name = name
-        districts = {dist.name: dist for dist in districts}
+    def move_agent(self, agent, new_location):
+        self.locations[agent.location].remove(agent)
+        agent.location = new_location
+        self.locations[new_location].append(agent)
