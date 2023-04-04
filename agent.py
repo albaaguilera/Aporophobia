@@ -9,6 +9,8 @@ class Apo_Agent(mesa.Agent):
         self.age = None
         self.district = district
         self.wealth = None 
+        self.status = None
+        self.gender = None
 
     def assign_income(self):
         district_income_data = district_wealth[self.district]
@@ -17,11 +19,19 @@ class Apo_Agent(mesa.Agent):
         prob = income_probs.tolist()
         self.wealth = np.random.choice(income, p=prob)
 
-    def assign_age(self):
+    def assign_age_and_status(self):
         probabilidades_edades = probabilidades_por_distrito[self.district]
         edades = list(probabilidades_edades.keys())
         probabilidades = list(probabilidades_edades.values())
         self.age = np.random.choice(edades, p=probabilidades)
+
+        if self.age <= 16:
+            self.status = "student"
+        elif 16 < self.age <=22:
+            self.status = np.random.choice(["student", "employed", "unemployed"])
+        elif 22 < self.age <= 67:
+            self.status = np.random.choice([ "employed", "unemployed"])
+        else: self.status = ["retired"]
 
     def go_work(self):
         self.model.districts[self.district].place_agent(self, self.random.choice(self.model.districts[self.district].locations['work']))
