@@ -6,8 +6,8 @@ districtes = ['Gràcia', 'Sarrià-Sant Gervasi', 'Les Corts', 'Eixample']
 renda2020 = pd.read_csv("C:/Users/albaa/Escriptori/MasterModelitzacio/JAE/pythonmesa/mesa/aporophobia/Aporophobia/OpenData/2020_renda_neta_mitjana_per_persona.csv")
 renda2020['Nom_Districte'] = renda2020['Nom_Districte'].replace("L'Eixample", "Eixample")
 renda2020 = renda2020[renda2020['Nom_Districte'].isin(districtes)]
-
 renda2020['Import_Euros'] = renda2020['Import_Euros'] / 12
+
 district_wealth = {}
 for district in districtes:
     district_wealth[district] = renda2020[renda2020['Nom_Districte'] == district]
@@ -20,10 +20,14 @@ age_counts = edat2020.groupby(['Nom_Districte', 'Edat'])['Nombre'].sum()
 age_percentages = age_counts / total_people
 age_percentages = age_percentages.reset_index()
 probabilidades_por_distrito = age_percentages.groupby('Nom_Districte').apply(lambda x: dict(zip(x.Edat, x.Nombre))).to_dict()
+probabilidades_edades = probabilidades_por_distrito['Gràcia']
 
 def assign_district():
     district_probabilities = total_people / total_people.sum()
     district_selected = np.random.choice(total_people.index, p=district_probabilities)
     return district_selected
 
-probabilidades_edades = probabilidades_por_distrito['Gràcia']
+#GENDER
+
+gender2021 = pd.read_csv("C:/Users/albaa/Escriptori/MasterModelitzacio/JAE/pythonmesa/mesa/aporophobia/Aporophobia/OpenData/2021_Atur_per_sexe.csv")
+gender2021 

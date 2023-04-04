@@ -4,6 +4,7 @@ from city import DistrictGrid
 from typing import Collection, Dict, List, Tuple
 from agent import Apo_Agent
 from data import assign_district
+import data
 
 N = 5
 
@@ -21,7 +22,7 @@ class CityModel(mesa.Model):
         for i in range(self.num_agents):
             ag = Apo_Agent(i, self, district = assign_district()) 
             ag.home = self.districts[ag.district].locations['houses'][i]
-            ag.assign_age()
+            ag.assign_age_and_status()
             ag.assign_income()
             self.schedule.add(ag)
 
@@ -58,7 +59,7 @@ class CityModel(mesa.Model):
                 
         for i in range(self.num_agents):
             agent = self.schedule.agents[i]
-            print("Position of "+ str(agent.unique_id) +" at time " + str(time) + " is " + str(agent.pos) + " in district " + str(agent.district) + " with age " + str(agent.age) + " and busy positions " + str())
+            print("Position of "+ str(agent.unique_id) +" at time " + str(time) + " is " + str(agent.pos) + " in district " + str(agent.district) + " with age " + str(agent.age) + " and status " + str(agent.status))
 
         self.datacollector.collect(self)
         self.schedule.step()
