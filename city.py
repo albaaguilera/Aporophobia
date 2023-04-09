@@ -50,27 +50,40 @@ class DistrictGrid(MultiGrid):
         except KeyError:
             self.locations[type] = [(x, y)]
         self.__busy_positions.append((x, y))
+
+
+class CityModel(Model):
+    """A model representing a city as a collection of districts.
+
+    Attributes
+    ----------
+    name : str
+    districts : Dict[str, DistrictGrid]
+
+    See Also
+    --------
+    mesa.model.Model
+
+    """
+    name: str
+    districts: Dict[str, DistrictGrid]
+
+    def __init__(self, name: str, districts: Collection[DistrictGrid]) -> None:
+        """Generate a new city model.
+
+        Parameters
+        ----------
+        name : str
+        districts : Collection[DistrictGrid]
+
+        """
+        self.name = name
+        self.districts = {dist.name: dist for dist in districts}
+
+
+if __name__ == '__main__':
     
-    def generate_tuples(self, N, x_range, y_range):
-        tuples = list()
-        while len(tuples) < N:
-            x = random.randint(x_range[0], x_range[1])
-            y = random.randint(y_range[0], y_range[1])
-            t = (x, y)
-            if t in self.__busy_positions:
-                continue
-            if t in tuples:
-                continue
-            tuples.append(t)
-        return tuples
-
-    def move_agent(self, agent, new_location):
-        self.locations[agent.location].remove(agent)
-        agent.location = new_location
-        self.locations[new_location].append(agent)
-
-
-gracia = DistrictGrid(
+  gracia = DistrictGrid(
         'Gràcia',
         10,
         10,
@@ -83,7 +96,7 @@ gracia = DistrictGrid(
     )
     #gracia.locations['houses'] = gracia.generate_tuples(N, (0,9) , (0,9))
 
-les_corts = DistrictGrid(
+  les_corts = DistrictGrid(
         'Les Corts',
         10,
         10,
@@ -95,7 +108,7 @@ les_corts = DistrictGrid(
          'hospital': [(2, 0), (0, 2)]}
     )
 
-sarria_stgervasi = DistrictGrid(
+  sarria_stgervasi = DistrictGrid(
         'Sarrià-Sant Gervasi',
         10,
         10,
@@ -107,7 +120,7 @@ sarria_stgervasi = DistrictGrid(
          'hospital': [(2, 0), (0, 2)]}
     )
 
-eixample = DistrictGrid(
+  eixample = DistrictGrid(
         'Eixample',
         10,
         10,
@@ -119,7 +132,4 @@ eixample = DistrictGrid(
          'hospital': [(2, 0), (0, 2)]}
     )
 
-lista_distritos = [gracia, les_corts, eixample, sarria_stgervasi] 
-    
-for district in lista_distritos:
-    district.locations['houses'] = district.generate_tuples(N, (0, 9), (0, 9))
+  lista_distritos = [gracia, les_corts, eixample, sarria_stgervasi]
