@@ -50,21 +50,71 @@ class DistrictGrid(MultiGrid):
         except KeyError:
             self.locations[type] = [(x, y)]
         self.__busy_positions.append((x, y))
-    
-    def generate_tuples(self, N, x_range, y_range):
-        tuples = list()
-        while len(tuples) < N:
-            x = random.randint(x_range[0], x_range[1])
-            y = random.randint(y_range[0], y_range[1])
-            t = (x, y)
-            if t in self.__busy_positions:
-                continue
-            if t in tuples:
-                continue
-            tuples.append(t)
-        return tuples
 
-    def move_agent(self, agent, new_location):
-        self.locations[agent.location].remove(agent)
-        agent.location = new_location
-        self.locations[new_location].append(agent)
+
+class CityModel(Model):
+    """A model representing a city as a collection of districts.
+
+    Attributes
+    ----------
+    name : str
+    districts : Dict[str, DistrictGrid]
+
+    See Also
+    --------
+    mesa.model.Model
+
+    """
+    name: str
+    districts: Dict[str, DistrictGrid]
+
+    def __init__(self, name: str, districts: Collection[DistrictGrid]) -> None:
+        """Generate a new city model.
+
+        Parameters
+        ----------
+        name : str
+        districts : Collection[DistrictGrid]
+
+        """
+        self.name = name
+        self.districts = {dist.name: dist for dist in districts}
+
+
+if __name__ == '__main__':
+    
+    # crear dos districtes
+    ciutat_vella = DistrictGrid(
+        'Ciutat Vella',
+        10,
+        10,
+        False,
+        {'escola': [(0, 0), (7, 6)],
+         'hospital': [(5, 5)]}
+    )
+
+    les_corts = DistrictGrid(
+        'Les Corts',
+        7,
+        7,
+        False,
+        {'escola': [(5, 5)],
+         'hospital': [(3, 1), (7, 3)]}
+    )
+
+    # crear la ciutat amb els dos districtes
+    barcelona = CityModel('Barcelona', [ciutat_vella, les_corts])
+
+    # on estan els hospitals de Les Corts
+    print("Els hospitals de Les Corts:")
+    print(barcelona.districts['Les Corts'].locations['hospital'])
+
+    print("Escoles a Ciutat Vella:")
+    print(barcelona.districts['Ciutat Vella'].locations['escola'])
+
+    # posar una nova escola a ciutat vella
+    barcelona.districts['Ciutat Vella'].add_location('escola', 4, 3)
+    print("Noves escoles a Ciuta Vella:")
+    print(barcelona.districts['Ciutat Vella'].locations['escola'])
+
+    pass
