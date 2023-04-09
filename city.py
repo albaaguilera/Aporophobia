@@ -83,38 +83,53 @@ class CityModel(Model):
 
 if __name__ == '__main__':
     
-    # crear dos districtes
-    ciutat_vella = DistrictGrid(
-        'Ciutat Vella',
+  gracia = DistrictGrid(
+        'Gràcia',
         10,
         10,
         False,
-        {'escola': [(0, 0), (7, 6)],
-         'hospital': [(5, 5)]}
+        {'school': [(0, 0), (7, 6)],
+         'work': [(3, 1), (7, 3)],
+         'leisure': [(3, 2), (7, 4)],
+         'grocery':  [(1, 0), (0, 1)],
+         'hospital': [(2, 0), (0, 2)]}
     )
+    #gracia.locations['houses'] = gracia.generate_tuples(N, (0,9) , (0,9))
 
-    les_corts = DistrictGrid(
+  les_corts = DistrictGrid(
         'Les Corts',
-        7,
-        7,
+        10,
+        10,
         False,
-        {'escola': [(5, 5)],
-         'hospital': [(3, 1), (7, 3)]}
+        {'school': [(5, 5)],
+         'work': [(0, 0), (5, 1)],
+         'leisure': [(3, 2), (7, 4)],
+         'grocery':  [(1, 0), (0, 1)],
+         'hospital': [(2, 0), (0, 2)]}
     )
 
-    # crear la ciutat amb els dos districtes
-    barcelona = CityModel('Barcelona', [ciutat_vella, les_corts])
+  sarria_stgervasi = DistrictGrid(
+        'Sarrià-Sant Gervasi',
+        10,
+        10,
+        False,
+        {'school': [(5, 4)],
+         'work' : [( 0, 1)],
+         'leisure': [(3, 2), (7, 4)],
+         'grocery':  [(1, 0), (0, 0)],
+         'hospital': [(2, 0), (0, 2)]}
+    )
 
-    # on estan els hospitals de Les Corts
-    print("Els hospitals de Les Corts:")
-    print(barcelona.districts['Les Corts'].locations['hospital'])
+  eixample = DistrictGrid(
+        'Eixample',
+        10,
+        10,
+        False,
+        {'school': [(5, 2)],
+         'work' : [(2, 2)],
+         'leisure': [(3, 2), (7, 4)],
+         'grocery':  [(1, 0), (0, 0)],
+         'hospital': [(2, 0), (0, 2)]}
+    )
 
-    print("Escoles a Ciutat Vella:")
-    print(barcelona.districts['Ciutat Vella'].locations['escola'])
-
-    # posar una nova escola a ciutat vella
-    barcelona.districts['Ciutat Vella'].add_location('escola', 4, 3)
-    print("Noves escoles a Ciuta Vella:")
-    print(barcelona.districts['Ciutat Vella'].locations['escola'])
-
-    pass
+  lista_distritos = [gracia, les_corts, eixample, sarria_stgervasi]
