@@ -2,4 +2,7 @@
 
 An agent-based model to study the relationship between institutional aporophobia and poverty.
 
-The new uploaded files are in the master branch, a jupyter notebook file containing the summarized study I have been doing to visualize the changes in my model and agent object in the Apo_model_agent.py file. 
+The uploaded files in the citymodel branch describe a district/partitioned grid with a number of agents N with ages X proportional to real data of each district extracted from OpenData BCN. The corresponding houses locations are randomly generated. 
+
+The uploaded files with Needs Model implementation message describe the Needs model method, the agent class holds a needs class dictionary, SAT values, and NSL values stored in the data.py file. The action in the time step t is decided taking the maximum score of [1] in the Needs Model paper. 
+
