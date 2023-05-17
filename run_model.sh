@@ -16,7 +16,5 @@
 #SBATCH --cpus-per-task=20
 #SBATCH --tasks-per-node=1
 
-export DIRNAME = /home/nmontes/Aporophobia/$1
-mkdir $DIRNAME
-
+mkdir $1
 /home/nmontes/.conda/envs/aporo/bin/python run_model.py -P $1
