@@ -16,5 +16,16 @@
 #SBATCH --cpus-per-task=20
 #SBATCH --tasks-per-node=1
 
+
 mkdir $1
 /home/nmontes/.conda/envs/aporo/bin/python run_model.py -P $1
+
+
+# submit this script to the cluster from /home/nmontes/Aporophobia directory
+
+# sbatch run_model.sh NAME_OF_RESULTS_PATH
+
+# for example
+
+# sbatch run_model.sh results_N1
+# sbatch run_model.sh results_N2
