@@ -17,6 +17,7 @@
 #SBATCH --tasks-per-node=1
 
 spack load miniconda3@4.10.3
+conda init bash
 conda activate aporo
 
 python3 run_model.py
