@@ -11,8 +11,8 @@
 
 # You must carefully match tasks, cpus, nodes,
 # and cpus-per-task for your job. See docs.
-#SBATCH --tasks=2
-#SBATCH --nodes=2
+#SBATCH --tasks=1
+#SBATCH --nodes=1
 #SBATCH --cpus-per-task=20
 #SBATCH --tasks-per-node=1
 
