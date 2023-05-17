@@ -16,7 +16,4 @@
 #SBATCH --cpus-per-task=10
 #SBATCH --tasks-per-node=1
 
-spack load anaconda3@2021.05
-conda activate aporo
-
-python3 run_model.py
+/home/nmontes/.conda/envs/aporo/bin/python run_model.py
