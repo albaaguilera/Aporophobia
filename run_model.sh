@@ -11,7 +11,7 @@
 
 for i in {1..$SLURM_JOB_NUM_NODES}
 do
-    srun --nodes 1 --ntasks 1 --exclusive /home/nmontes/.conda/envs/aporo/bin/python run_model.py &
+    srun --nodes 1 --ntasks 1 --cpus-per-task 20 --exclusive /home/nmontes/.conda/envs/aporo/bin/python run_model.py &
 done
 
 wait

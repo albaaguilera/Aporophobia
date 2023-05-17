@@ -19,6 +19,7 @@ def powerset(s):
 
 def run_model(I):
     process_id = mp.current_process().pid
+    print(process_id)
 
     for index, norm_config in enumerate(powerset(dummy_norms)):
         for i in range(I):
@@ -28,7 +29,6 @@ def run_model(I):
             
             # collect and save data
             run_id = f"{process_id}_{index}_{i}"
-            print(run_id)
             # model_vars_df = barcelona.datacollector.get_model_vars_dataframe()
             # agent_vars_df = barcelona.datacollector.get_agent_vars_dataframe()
             # model_vars_df.to_csv(f"results/model_vars_{run_id}.csv", sep=';')
@@ -38,7 +38,6 @@ def run_model(I):
 if __name__ == '__main__':
 
     n_cpus = mp.cpu_count()
-    print(n_cpus)
     load_per_core = M // n_cpus
 
     pool = mp.Pool(n_cpus)
