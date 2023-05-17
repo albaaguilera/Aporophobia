@@ -1,10 +1,8 @@
 
 
 from mesa.space import MultiGrid
-from typing import Collection, Dict, List, Tuple
+from typing import Dict, List, Tuple
 import random
-import numpy as np
-import pandas as pd
 N = 5
 
 class DistrictGrid(MultiGrid):
@@ -19,7 +17,6 @@ class DistrictGrid(MultiGrid):
         self.__busy_positions = []
         self.__check_consistent_locations(width, height, locations)
         self.locations = locations
-        print(self.__busy_positions)
     
     def __check_consistent_locations(
         self,
@@ -50,40 +47,27 @@ class DistrictGrid(MultiGrid):
         except KeyError:
             self.locations[type] = [(x, y)]
         self.__busy_positions.append((x, y))
-
-
-class CityModel(Model):
-    """A model representing a city as a collection of districts.
-
-    Attributes
-    ----------
-    name : str
-    districts : Dict[str, DistrictGrid]
-
-    See Also
-    --------
-    mesa.model.Model
-
-    """
-    name: str
-    districts: Dict[str, DistrictGrid]
-
-    def __init__(self, name: str, districts: Collection[DistrictGrid]) -> None:
-        """Generate a new city model.
-
-        Parameters
-        ----------
-        name : str
-        districts : Collection[DistrictGrid]
-
-        """
-        self.name = name
-        self.districts = {dist.name: dist for dist in districts}
-
-
-if __name__ == '__main__':
     
-  gracia = DistrictGrid(
+    def generate_tuples(self, N, x_range, y_range):
+        tuples = list()
+        while len(tuples) < N:
+            x = random.randint(x_range[0], x_range[1])
+            y = random.randint(y_range[0], y_range[1])
+            t = (x, y)
+            if t in self.__busy_positions:
+                continue
+            if t in tuples:
+                continue
+            tuples.append(t)
+        return tuples
+
+    def move_agent(self, agent, new_location):
+        self.locations[agent.location].remove(agent)
+        agent.location = new_location
+        self.locations[new_location].append(agent)
+
+
+gracia = DistrictGrid(
         'Gràcia',
         10,
         10,
@@ -92,11 +76,12 @@ if __name__ == '__main__':
          'work': [(3, 1), (7, 3)],
          'leisure': [(3, 2), (7, 4)],
          'grocery':  [(1, 0), (0, 1)],
-         'hospital': [(2, 0), (0, 2)]}
+         'hospital': [(2, 0), (0, 2)],
+         'shopping': [(1, 1), (2, 2)]}
     )
     #gracia.locations['houses'] = gracia.generate_tuples(N, (0,9) , (0,9))
 
-  les_corts = DistrictGrid(
+les_corts = DistrictGrid(
         'Les Corts',
         10,
         10,
@@ -105,10 +90,11 @@ if __name__ == '__main__':
          'work': [(0, 0), (5, 1)],
          'leisure': [(3, 2), (7, 4)],
          'grocery':  [(1, 0), (0, 1)],
-         'hospital': [(2, 0), (0, 2)]}
+         'hospital': [(2, 0), (0, 2)],
+         'shopping': [(1, 1), (2, 2)]}
     )
 
-  sarria_stgervasi = DistrictGrid(
+sarria_stgervasi = DistrictGrid(
         'Sarrià-Sant Gervasi',
         10,
         10,
@@ -117,10 +103,11 @@ if __name__ == '__main__':
          'work' : [( 0, 1)],
          'leisure': [(3, 2), (7, 4)],
          'grocery':  [(1, 0), (0, 0)],
-         'hospital': [(2, 0), (0, 2)]}
+         'hospital': [(2, 0), (0, 2)],
+         'shopping': [(1, 1), (2, 2)]}
     )
 
-  eixample = DistrictGrid(
+eixample = DistrictGrid(
         'Eixample',
         10,
         10,
@@ -129,7 +116,12 @@ if __name__ == '__main__':
          'work' : [(2, 2)],
          'leisure': [(3, 2), (7, 4)],
          'grocery':  [(1, 0), (0, 0)],
-         'hospital': [(2, 0), (0, 2)]}
+         'hospital': [(2, 0), (0, 2)],
+         'shopping': [(1, 1), (2, 3)]}
     )
 
-  lista_distritos = [gracia, les_corts, eixample, sarria_stgervasi]
+lista_distritos = [gracia, les_corts, eixample, sarria_stgervasi] 
+    
+for district in lista_distritos:
+    district.locations['houses'] = district.generate_tuples(N, (0, 9), (0, 9))
+    
