@@ -37,8 +37,9 @@ def run_model(I):
 if __name__ == '__main__':
 
     n_cpus = mp.cpu_count()
+    print(n_cpus)
     load_per_core = M // n_cpus
 
-    pool = mp.Pool(n_cpus)
-    _ = pool.starmap(run_model, [(load_per_core,)]*n_cpus)
-    pool.close()
+    # pool = mp.Pool(n_cpus)
+    # _ = pool.starmap(run_model, [(load_per_core,)]*n_cpus)
+    # pool.close()
