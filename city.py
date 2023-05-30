@@ -1,8 +1,10 @@
 
-
+from agent import Apo_Agent
 from mesa.space import MultiGrid
-from typing import Dict, List, Tuple
+from typing import Collection, Dict, List, Tuple
 import random
+import numpy as np
+import pandas as pd
 N = 5
 
 class DistrictGrid(MultiGrid):
@@ -66,6 +68,20 @@ class DistrictGrid(MultiGrid):
         agent.location = new_location
         self.locations[new_location].append(agent)
 
+    def get_agents_at_position(self, position):
+        agents = []
+        for cell in self.iter_cell_list_contents(position):
+            if isinstance(cell, Apo_Agent):
+                agents.append(cell)
+        return agents
+    
+    def check_number_of_agents(self):
+        count = 0
+        leisure_locations = self.locations.get('leisure', [])
+        for location in leisure_locations:
+            agents = self.get_agents_at_position(location)
+            count += len(agents)
+        return count
 
 gracia = DistrictGrid(
         'Gràcia',
@@ -77,7 +93,9 @@ gracia = DistrictGrid(
          'leisure': [(3, 2), (7, 4)],
          'grocery':  [(1, 0), (0, 1)],
          'hospital': [(2, 0), (0, 2)],
-         'shopping': [(1, 1), (2, 2)]}
+         'shopping': [(1, 1), (2, 2)],
+         'reception center': [(0, 3), (3, 3)],
+         'prison': [(1, 2), (4, 4)]}
     )
     #gracia.locations['houses'] = gracia.generate_tuples(N, (0,9) , (0,9))
 
@@ -91,7 +109,10 @@ les_corts = DistrictGrid(
          'leisure': [(3, 2), (7, 4)],
          'grocery':  [(1, 0), (0, 1)],
          'hospital': [(2, 0), (0, 2)],
-         'shopping': [(1, 1), (2, 2)]}
+         'shopping': [(1, 1), (2, 2)],
+         'reception center': [(0, 3), (3, 3)],
+         'prison': [(1, 2), (4, 4)]
+         }
     )
 
 sarria_stgervasi = DistrictGrid(
@@ -104,7 +125,9 @@ sarria_stgervasi = DistrictGrid(
          'leisure': [(3, 2), (7, 4)],
          'grocery':  [(1, 0), (0, 0)],
          'hospital': [(2, 0), (0, 2)],
-         'shopping': [(1, 1), (2, 2)]}
+         'shopping': [(1, 1), (2, 2)],
+         'reception center': [(0, 3), (3, 3)],
+         'prison': [(1, 2), (4, 4)]}
     )
 
 eixample = DistrictGrid(
@@ -117,11 +140,13 @@ eixample = DistrictGrid(
          'leisure': [(3, 2), (7, 4)],
          'grocery':  [(1, 0), (0, 0)],
          'hospital': [(2, 0), (0, 2)],
-         'shopping': [(1, 1), (2, 3)]}
+         'shopping': [(1, 1), (2, 3)],
+         'reception center': [(0, 3), (3, 3)],
+         'prison': [(1, 2), (4, 4)]}
     )
 
 lista_distritos = [gracia, les_corts, eixample, sarria_stgervasi] 
     
 for district in lista_distritos:
     district.locations['houses'] = district.generate_tuples(N, (0, 9), (0, 9))
-    
+
