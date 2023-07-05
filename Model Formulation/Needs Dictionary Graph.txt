@@ -1,0 +1,154 @@
+graph LR
+    %% Adjust node size
+    style A fill:#ffd966,stroke:#333,stroke-width:4px
+    style B fill:#ebd4cb,stroke:#333,stroke-width:2px
+    style C fill:#b7e1cd,stroke:#333,stroke-width:2px
+    style D fill:#b7e1cd,stroke:#333,stroke-width:2px
+    style E fill:#b7e1cd,stroke:#333,stroke-width:2px
+    style F fill:#b7e1cd,stroke:#333,stroke-width:2px
+
+    subgraph Needs
+        A[Needs]
+    end
+
+    subgraph Categories
+        B[Categories]
+    end
+
+    subgraph Physiological
+        C(Physiological)
+        C_Food(Food)
+        C_Shelter(Shelter)
+        C_Sleep(Sleep)
+        C_Health(Health)
+    end
+
+    subgraph Safety
+        D(Safety)
+        D_Clothing(Clothing)
+        D_Financial_Security(Financial Security)
+        D_Employment(Employment)
+        D_Education(Education)
+    end
+
+    subgraph Belonging
+        E(Belonging)
+        E_Family(Family)
+        E_Friendship(Friendship)
+        E_Intimacy(Intimacy)
+    end
+
+    subgraph Esteem
+        F(Esteem)
+        F_Freedom(Freedom)
+        F_Status(Status)
+        F_Self_Esteem(Self-esteem)
+    end
+    
+    subgraph Decays by status
+        G(Employed, Unemployed, Student, Retired, Homeless)
+        G_Decay1(Decay 1)
+        G_Decay2(Decay 2)
+        G_Decay3(Decay 3)
+        G_Decay4(Decay 4)
+    end
+    %% Adjust node positions
+    A -->|Differentiated by| B
+    B -->|Imp c = 0.8 <br> Mean: 0.7 and Var: 0.2| C
+    B -->|Imp c = 0.7 <br> Mean and Var: 0.8, 0.4| D
+    B -->|Imp c = 0.6 <br> Mean and Var: 0.6, 0.4| E
+    B -->|Imp `c` = 0.3 <br> Mean and Var: 0.7, 0.4| F
+
+    C --> C_Food
+    C --> C_Shelter
+    C --> C_Sleep
+    C --> C_Health
+
+    D --> D_Clothing
+    D --> D_Financial_Security
+    D --> D_Employment
+    D --> D_Education
+
+    E --> E_Family
+    E --> E_Friendship
+    E --> E_Intimacy
+
+    F --> F_Freedom ---> G_Decay1
+    F --> F_Status ---> G_Decay2
+    F --> F_Self_Esteem ---> G_Decay3
+
+
+#NORMAL
+
+graph LR
+    %% Adjust node size
+    style A fill:#ffd966,stroke:#333,stroke-width:4px
+    style B fill:#ebd4cb,stroke:#333,stroke-width:2px
+    style C fill:#b7e1cd,stroke:#333,stroke-width:2px
+    style D fill:#b7e1cd,stroke:#333,stroke-width:2px
+    style E fill:#b7e1cd,stroke:#333,stroke-width:2px
+    style F fill:#b7e1cd,stroke:#333,stroke-width:2px
+
+    subgraph Needs
+        A[Needs]
+    end
+
+    subgraph Categories
+        B[Categories]
+    end
+
+    subgraph Physiological
+        C(Physiological)
+        C_Food(Food)
+        C_Shelter(Shelter)
+        C_Sleep(Sleep)
+        C_Health(Health)
+    end
+
+    subgraph Safety
+        D(Safety)
+        D_Clothing(Clothing)
+        D_Financial_Security(Financial Security)
+        D_Employment(Employment)
+        D_Education(Education)
+    end
+
+    subgraph Belonging
+        E(Belonging)
+        E_Family(Family)
+        E_Friendship(Friendship)
+        E_Intimacy(Intimacy)
+    end
+
+    subgraph Esteem
+        F(Esteem)
+        F_Freedom(Freedom)
+        F_Status(Status)
+        F_Self_Esteem(Self-esteem)
+    end
+
+    %% Adjust node positions
+    A -->|Differentiated by| B
+    B -->|Imp c = 0.85 <br> μ: 0.7 and σ: 0.2| C
+    B -->|Imp c = 0.8 <br> μ: 0.8 and σ: 0.4| D
+    B -->|Imp c = 0.75 <br> μ: 0.6 and σ: 0.4| E
+    B -->|Imp c = 0.7 <br> μ: 0.7 and σ: 0.4| F
+
+    C --> C_Food
+    C --> C_Shelter
+    C --> C_Sleep
+    C --> C_Health
+
+    D --> D_Clothing
+    D --> D_Financial_Security
+    D --> D_Employment
+    D --> D_Education
+
+    E --> E_Family
+    E --> E_Friendship
+    E --> E_Intimacy
+
+    F --> F_Freedom 
+    F --> F_Status 
+    F --> F_Self_Esteem 
+
