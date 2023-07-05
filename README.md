@@ -1,8 +1,7 @@
-# Aporophobia
+# An Agent-Based Model for Poverty and Discrimination Policy-Making
 
-An agent-based model to study the relationship between institutional aporophobia and poverty.
+The aim of this project is to study the effect of aporophobic and non-aporophobic regulatory policies into and agent-based model (ABM) populated by autonomous decision-making agents using real demographic data. In particular, it has been considered the case of four Barcelona districts using data from Opendata site \cite{Open_data}. This study seeks to analyze the effect of norms, labelled as aporophobic or non aporophobic by legal experts on the levels of poverty and inequality. 
 
-The uploaded files in the citymodel branch describe a district/partitioned grid with a number of agents N with ages X proportional to real data of each district extracted from OpenData BCN. The corresponding houses locations are randomly generated. 
+The main model formulation notebook and code (including the Data, City, Agent and Model classes) can be found in the Model Formulation folder, along with the UML diagram and Needs dictionary graph script. In contrast, the trial and cluster notebooks are located in the Results folder, alongside with the submission script \textit{run\_model.py}. 
 
-The uploaded files with Needs Model implementation message describe the Needs model method, the agent class holds a needs class dictionary, SAT values, and NSL values stored in the data.py file. The action in the time step t is decided taking the maximum score of [1] in the Needs Model paper. 
 
