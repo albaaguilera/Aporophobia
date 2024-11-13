@@ -8,8 +8,8 @@ The Github repository is structured in three main folders containing:
 2. Open Data: 8 demographic datasets required to initialize the simulation.
 3. Results: submission scrip to the cluster, cluster's results and analysis of them with jupyter notebooks. 
 
-Additionally, there is a UML diagram to illustrate the dependencies between the different files. 
-![Alt text](diagram.mmd)
+Additionally, there is a ![UML diagram](diagram.mmd) to illustrate the dependencies between the different files. 
+
 
 
 ## Getting Started 
