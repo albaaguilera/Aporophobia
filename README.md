@@ -4,22 +4,22 @@ The aim of this project is to study the effect of aporophobic and non-aporophobi
 
 The Github repository is structured in three main folders containing: 
 
-1. Model Formulation: main code files.
-   - model
-   - agent
-   - city
-   - data: input of the simulation, reads and treats demographic data and fills the SATS and NSL initial parameters depending on status.
-   - norms
-3. Open Data: input of the simulation, demographic datasets required to initialize the simulation.
+1. **Model Formulation**: main code files.
+   - **model**
+   - **agent**
+   - **city**
+   - **data**: input of the simulation, reads and treats demographic data and fills the SATS and NSL initial parameters depending on status.
+   - **norms**
+3. **Open Data**: input of the simulation, demographic datasets required to initialize the simulation.
    - 2018_age_by_gender.csv
    - 2019_income.csv
    - 2022_rent.csv
    - 2021_unemployment_by_gender.csv
-5. Results: output of the simulation.
-   - runmodel.py: submission script to the cluster
-   - runmodel.ssh: submission script to the cluster
-   - resultatssimulacionscluster.zip: zip folder with the output of the simulation
-   - cluster.ipnyb: analysis of the results through wealth distributions and gini computation
+5. **Results**: output of the simulation.
+   - **runmodel.py**: submission script to the cluster
+   - **runmodel.ssh**: submission script to the cluster
+   - **resultatssimulacionscluster.zip**: zip folder with the output of the simulation
+   - **cluster.ipnyb**: analysis of the results through wealth distributions and gini computation
 
 There is a ![UML diagram](diagram.mmd) to illustrate the dependencies between the different code files in Model Formulation. 
 
