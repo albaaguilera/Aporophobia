@@ -4,13 +4,13 @@ The aim of this project is to study the effect of aporophobic and non-aporophobi
 
 The Github repository is structured in three main folders containing: 
 
-1. **Model Formulation**: main code files.
+1. **Model Formulation**: main code files, data.py initializes the agents' profiles, city creates the physical environment, model and agent define the individual step and action deliberation of the agents and norms introduces the main policies affecting the simulation.
    - **model**
    - **agent**
    - **city**
-   - **data**: input of the simulation, reads and treats demographic data and fills the SATS and NSL initial parameters depending on status.
+   - **data**
    - **norms**
-3. **Open Data**: input of the simulation, demographic datasets required to initialize the simulation.
+3. **Open Data**: demographic datasets required to initialize the simulation.
    - 2018_age_by_gender.csv
    - 2019_income.csv
    - 2022_rent.csv
