@@ -5,11 +5,11 @@ The aim of this project is to study the effect of aporophobic and non-aporophobi
 The Github repository is structured in three main folders containing: 
 
 1. Model Formulation: main code files.
-   1.1  model
-   1.2  agent
-   1.3  city
-   1.4  data
-   1.5  norms
+   - model
+   - agent
+   - city
+   - data
+   - norms
 3. Open Data: 8 demographic datasets required to initialize the simulation.
 4. Results: submission scrip to the cluster, cluster's results and analysis of them with jupyter notebooks. 
 
