@@ -9,6 +9,8 @@ The Github repository is structured in three main folders containing:
 3. Results: submission scrip to the cluster, cluster's results and analysis of them with jupyter notebooks. 
 
 Additionally, there is a UML diagram to illustrate the dependencies between the different files. 
+![Alt text](diagram.md)
+
 
 ## Getting Started 
 To run this project, you’ll need:
