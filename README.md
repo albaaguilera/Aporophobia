@@ -15,11 +15,11 @@ The Github repository is structured in three main folders containing:
    - 2019_income.csv
    - 2022_rent.csv
    - 2021_unemployment_by_gender.csv
-5. **Results**: output of the simulation.
-   - **runmodel.py**: submission script to the cluster
-   - **runmodel.ssh**: submission script to the cluster
-   - **resultatssimulacionscluster.zip**: zip folder with the output of the simulation
-   - **cluster.ipnyb**: analysis of the results through wealth distributions and gini computation
+5. **Results**: submission scripts to the cluster, zip folder with the output of the simulation and analysis of it through wealth distributions and gini computation.
+   - **run_cluster.ssh**
+   - **run_cluster.py**
+   - **resultatssimulacionscluster.zip**
+   - **cluster.ipnyb**
 
 There is a ![UML diagram](diagram.mmd) to illustrate the dependencies between the different code files in Model Formulation. 
 
