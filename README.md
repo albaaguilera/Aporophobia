@@ -4,6 +4,7 @@ The aim of this project is to study the effect of aporophobic and non-aporophobi
 
 This repository is based on methods from Aguilera et al. (2024) [1].
 
+## Structure
 The Github repository is structured in three main folders containing: 
 
 1. **Model Formulation**: main code files, data.py initializes the agents' profiles, city creates the physical environment, model and agent define the individual step and action deliberation of the agents and norms introduces the main policies affecting the simulation.
@@ -33,7 +34,7 @@ To run this project, you’ll need:
 
 ## Contact
 
-For questions or collaborations, please reach out to the project maintainer, Alba Aguilera.
+For questions or collaborations, please reach out to the project maintainer, Alba Aguilera (aaguilera@iiia.csic.es).
 
 ## References
 
