@@ -171,5 +171,3 @@ if __name__ == '__main__':
    
 
 nsl_wealth = barcelona.datacollector.get_agent_vars_dataframe()
-nsl_wealth.to_csv(r'C:/Users/albaa/Escriptori/MasterModelitzacio/JAE/pythonmesa/mesa/aporophobia/con_norms/nsl_wealth.csv', index=False, header=True)
-
