@@ -1,12 +1,37 @@
 # An Agent-Based Model (ABM) for Poverty and Discrimination Policy-Making
+=============================
+Description
+-----
+The Aporophobia Agent-Based Model (AABM) is a multiagent system simulation designed to represent the daily lives of citizens influenced by legal norms.These individuals are created based on real-life demographic data from certain districts within a city, while the norms reflect real-world policies inforced in that city. For this initial version of the model, we choose 4 districts within Barcelona.  In particular, we extract data from [Open Data Barcelona portal](https://opendata-ajuntament.barcelona.cat/), filtering for four different Barcelona districts. 
 
-Aporophobia Agent-Based Model (AABM) is a multiagent system simulation designed to represent the daily lives of citizens influenced by legal norms.These individuals are created based on real-life demographic data from certain districts within a city, while the norms reflect real-world policies inforced in that city. For this initial version of the model, we choose 4 districts within Barcelona.  In particular, we extract data from [Open Data Barcelona portal](https://opendata-ajuntament.barcelona.cat/), filtering for four different Barcelona districts. 
+On the other hand, aporophobia is a term coined by Adela Cortina in 2017, refering to the rejection of the poor. This discrimination against a minority has been officially recalled as an aggravating factor for hate crimes ([2021](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2019-7771)).  This study seeks to analyze the effect of norms, labelled either as aporophobic or non-aporophobic by legal experts on poverty and inequality, into the behaviour and economy of the agents. By using this social simulation, we are able to examine the impact that aporophobia, within the legal framework, has on poverty and inequality levels. These insights can then inform the development of a new generation of policy-making for poverty reduction.   
 
+The AABM is built using Python's Agent-Based Model (ABM) library Mesa, used for building, analyzing and visualizing ABMs ([Mesa](https://mesa.readthedocs.io/en/stable/)). The city is constructed as a virtual grid with different locations associated to buildings. The agents represent citizens with a unique personal profile including attributes like gender, age, status, etc. Additionally, the agents are programmed to make autonomous decision with a methodology inspired by the Needs-based Model (Dignum et al., [Needs-based Model](https://simassocc.org/)), which allows agent to decide on their actions based on their personal profile and needs. 
 
-
-This study seeks to analyze the effect of norms, labelled as aporophobic or non-aporophobic by legal experts, on the levels of poverty and inequality. 
+To assess the poverty and inequality levels resulting from the implemented policies, statistical samples of the resulting wealth distributions and computed Gini Coefficients are utilized. These metrics are a valuable indicator of the outcomes of the policies under examination.
 
 This repository is based on methods from Aguilera et al. (2024) [1], Nieves et al. (2023) [2].
+
+Usage
+-----
+
+To use the AABM, clone the repository into your local file system:
+
+.. code-block:: bash
+
+    git clone https://github.com/aaguilera/Aporophobia-ABM.git
+
+Navigate to the root folder of the project and build the library:
+
+.. code-block:: bash
+
+    python -m build
+
+Install the package in development mode:
+
+.. code-block:: bash
+
+    pip install --editable .
 
 ## Structure
 The Github repository is structured in three main folders containing: 
