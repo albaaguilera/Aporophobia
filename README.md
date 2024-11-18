@@ -1,7 +1,7 @@
 # An Agent-Based Model (ABM) for Poverty and Discrimination Policy-Making
-=============================
-Description
 -----
+## Description
+
 The Aporophobia Agent-Based Model (AABM) is a multiagent system simulation designed to represent the daily lives of citizens influenced by legal norms.These individuals are created based on real-life demographic data from certain districts within a city, while the norms reflect real-world policies inforced in that city. For this initial version of the model, we choose 4 districts within Barcelona.  In particular, we extract data from [Open Data Barcelona portal](https://opendata-ajuntament.barcelona.cat/), filtering for four different Barcelona districts. 
 
 On the other hand, aporophobia is a term coined by Adela Cortina in 2017, refering to the rejection of the poor. This discrimination against a minority has been officially recalled as an aggravating factor for hate crimes ([2021](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2019-7771)).  This study seeks to analyze the effect of norms, labelled either as aporophobic or non-aporophobic by legal experts on poverty and inequality, into the behaviour and economy of the agents. By using this social simulation, we are able to examine the impact that aporophobia, within the legal framework, has on poverty and inequality levels. These insights can then inform the development of a new generation of policy-making for poverty reduction.   
