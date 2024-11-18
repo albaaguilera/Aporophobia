@@ -2,7 +2,7 @@
 
 The aim of this project is to study the effect of aporophobic and non-aporophobic regulatory policies using an agent-based model (ABM). This simulation is populated by autonomous decision-making agents built from real demographic data. In particular, we extract data from [Open Data Barcelona portal](https://opendata-ajuntament.barcelona.cat/), filtering for four different Barcelona districts. This study seeks to analyze the effect of norms, labelled as aporophobic or non-aporophobic by legal experts, on the levels of poverty and inequality. 
 
-This repository is based on methods from Aguilera et al. (2024) [1].
+This repository is based on methods from Aguilera et al. (2024) [1], Nieves et al. (2023) [2].
 
 ## Structure
 The Github repository is structured in three main folders containing: 
@@ -39,6 +39,7 @@ For questions or collaborations, please reach out to the project maintainer, Alb
 ## References
 
 1. Aguilera, A., Montes, N., Curto, G., Sierra, C., & Osman, N. (2024) *Can Poverty Be Reduced by Acting on Discrimination? An Agent-based Model for Policy Making*. IFAAMAS, DOI: [https://dl.acm.org/doi/10.5555/3635637.3662848]([(https://www.ifaamas.org/Proceedings/aamas2024/pdfs/p22.pdf))
+2. Montes, N., Curto, G., Osman, N., & Sierra, C. (2023). An Agent-Based Model for Poverty and Discrimination Policy-Making. arXiv preprint arXiv:2303.13994.
 
 
 
