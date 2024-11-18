@@ -41,17 +41,6 @@ To use the AABM, clone the repository into your local file system:
 
     git clone https://github.com/aaguilera/Aporophobia-ABM.git
 
-Navigate to the root folder of the project and build the library:
-
-.. code-block:: bash
-
-    python -m build
-
-Install the package in development mode:
-
-.. code-block:: bash
-
-    pip install --editable .
 
 ## Contact
 
