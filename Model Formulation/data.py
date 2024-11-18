@@ -4,7 +4,7 @@ import numpy as np
 from norms import Norm
 #income
 districtes = ['Gràcia', 'Sarrià-Sant Gervasi', 'Les Corts', 'Eixample']
-renda2020 = pd.read_csv("../OpenData/2019_renda_neta_mitjana_per_persona.csv")
+renda2020 = pd.read_csv("../OpenData/2019_income.csv")
 renda2020['Nom_Districte'] = renda2020['Nom_Districte'].replace("L'Eixample", "Eixample")
 renda2020 = renda2020[renda2020['Nom_Districte'].isin(districtes)]
 renda2020['Import_Euros'] = renda2020['Import_Euros'] / 12
@@ -15,7 +15,7 @@ for district in districtes:
 
 #rent
 districtes = ['Gràcia', 'Sarrià-Sant Gervasi', 'Les Corts', 'Eixample']    
-lloguer2021 = pd.read_csv("../OpenData/2022_lloguer_preu_trim.csv") #pd.read_csv("OpenData/2021_lloguer_preu_trim.csv")
+lloguer2021 = pd.read_csv("../OpenData/2022_rent.csv") #pd.read_csv("OpenData/2021_lloguer_preu_trim.csv")
 lloguer2021['Nom_Districte'] = lloguer2021['Nom_Districte'].replace("L'Eixample", "Eixample")
 lloguer2021 = lloguer2021[(lloguer2021['Nom_Districte'].isin(districtes)) & (lloguer2021['Lloguer_mitja'] == 'Lloguer mitjà mensual (Euros/mes)')]
 lloguer2021['Preu'] = pd.to_numeric(lloguer2021['Preu'])/4
@@ -25,7 +25,7 @@ for district in districtes:
     district_rent[district] = lloguer2021[lloguer2021['Nom_Districte'] == district]
 
 #age
-edat2020 = pd.read_csv("../OpenData/2019_ine_edat_any_a_any_per_sexe.csv")
+edat2020 = pd.read_csv("../OpenData/2019_age_by_gender.csv")
 
 edat2020 = edat2020[edat2020['Nom_Districte'].isin(districtes)]
 edat2020['Edat'] = edat2020['Edat any a any'].str.extract('(\d+)').astype(int)
