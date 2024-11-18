@@ -7,7 +7,7 @@ This repository is based on methods from Aguilera et al. (2024) [1].
 ## Structure
 The Github repository is structured in three main folders containing: 
 
-1. **Model Formulation**: main code files, data.py initializes the agents' profiles, city creates the physical environment, model and agent define the individual step and action deliberation of the agents and norms introduces the main policies affecting the simulation.
+1. **Model Formulation**: main code files, *data.py* initializes the agents' profiles and policies, city creates the physical environment, *model.py* and *agent.py* describe the individual step and action deliberation of the agents and *norms.py* defines the functioning of the policies affecting the simulation.
    - **model**
    - **agent**
    - **city**
