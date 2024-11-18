@@ -10,7 +10,7 @@ The AABM is built using Python's Agent-Based Model (ABM) library Mesa, used for 
 
 To assess the poverty and inequality levels resulting from the implemented policies, statistical samples of the resulting wealth distributions and computed Gini Coefficients are utilized. These metrics are a valuable indicator of the outcomes of the policies under examination.
 
-This repository is based on methods from Aguilera et al. (2024) [1], Nieves et al. (2023) [2].
+This repository is based on methods from *Aguilera et al*. (2024) [1], *Nieves et al*. (2023) [2].
 
 ## Structure
 The Github repository is structured in three main folders containing: 
