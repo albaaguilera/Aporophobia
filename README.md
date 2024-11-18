@@ -35,13 +35,9 @@ There is a ![UML diagram](diagram.mmd) to illustrate the dependencies between th
 ## Getting Started 
 To use the AABM, clone the repository into your local file system:
 
-.. code-block:: bash
-
     git clone https://github.com/aaguilera/Aporophobia-ABM.git
 
 Navigate to the ModelFormulation directory and execute the model.py:
-
-.. code-block:: bash
 
     cd ModelFormulation
     python model.py
