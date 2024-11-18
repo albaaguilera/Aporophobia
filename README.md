@@ -6,9 +6,7 @@ The Aporophobia Agent-Based Model (AABM) is a multiagent system simulation desig
 
 On the other hand, aporophobia is a term coined by Adela Cortina in 2017, refering to the rejection of the poor. This discrimination against a minority has been officially recalled as an aggravating factor for hate crimes ([2021](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2019-7771)).  This study seeks to analyze the effect of norms, labelled either as aporophobic or non-aporophobic by legal experts on poverty and inequality, into the behaviour and economy of the agents. By using this social simulation, we are able to examine the impact that aporophobia, within the legal framework, has on poverty and inequality levels. These insights can then inform the development of a new generation of policy-making for poverty reduction.   
 
-The AABM is built using Python's Agent-Based Model (ABM) library Mesa, used for building, analyzing and visualizing ABMs ([Mesa](https://mesa.readthedocs.io/en/stable/)). The city is constructed as a virtual grid with different locations associated to buildings. The agents represent citizens with a unique personal profile including attributes like gender, age, status, etc. Additionally, the agents are programmed to make autonomous decision with a methodology inspired by the Needs-based Model (Dignum et al., [Needs-based Model](https://simassocc.org/)), which allows agent to decide on their actions based on their personal profile and needs. 
-
-To assess the poverty and inequality levels resulting from the implemented policies, statistical samples of the resulting wealth distributions and computed Gini Coefficients are utilized. These metrics are a valuable indicator of the outcomes of the policies under examination.
+The AABM is built using Python's Agent-Based Model (ABM) library Mesa, used for building, analyzing and visualizing ABMs ([Mesa](https://mesa.readthedocs.io/en/stable/)). The city is constructed as a virtual grid with different locations associated to buildings. The agents represent citizens with a unique personal profile including attributes like gender, age, status, etc. Additionally, the agents are programmed to make autonomous decision with a methodology inspired by the Needs-based Model (Dignum et al., [Needs-based Model](https://simassocc.org/)), which allows agent to decide on their actions based on their personal profile and needs. To assess the poverty and inequality levels resulting from the implemented policies, statistical samples of the resulting wealth distributions and computed Gini Coefficients are utilized. These metrics are a valuable indicator of the outcomes of the policies under examination.
 
 This repository is based on methods from *Aguilera et al*. (2024) [1], *Nieves et al*. (2023) [2].
 
@@ -40,6 +38,15 @@ To use the AABM, clone the repository into your local file system:
 .. code-block:: bash
 
     git clone https://github.com/aaguilera/Aporophobia-ABM.git
+
+Navigate to the ModelFormulation directory and execute the model.py:
+
+.. code-block:: bash
+
+    cd ModelFormulation
+    python model.py
+
+This will generate *output_simulation.csv*, a preliminary file with the results. You can play with the number of agents (N) and number of timesteps (T) to generate new results. 
 
 
 ## Contact
