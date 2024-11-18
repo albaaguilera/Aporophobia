@@ -12,27 +12,6 @@ To assess the poverty and inequality levels resulting from the implemented polic
 
 This repository is based on methods from Aguilera et al. (2024) [1], Nieves et al. (2023) [2].
 
-Usage
------
-
-To use the AABM, clone the repository into your local file system:
-
-.. code-block:: bash
-
-    git clone https://github.com/aaguilera/Aporophobia-ABM.git
-
-Navigate to the root folder of the project and build the library:
-
-.. code-block:: bash
-
-    python -m build
-
-Install the package in development mode:
-
-.. code-block:: bash
-
-    pip install --editable .
-
 ## Structure
 The Github repository is structured in three main folders containing: 
 
@@ -56,10 +35,23 @@ The Github repository is structured in three main folders containing:
 There is a ![UML diagram](diagram.mmd) to illustrate the dependencies between the different code files in Model Formulation. 
 
 ## Getting Started 
-To run this project, you’ll need:
+To use the AABM, clone the repository into your local file system:
 
-- Python 3.7
-- Required packages in requirements.txt
+.. code-block:: bash
+
+    git clone https://github.com/aaguilera/Aporophobia-ABM.git
+
+Navigate to the root folder of the project and build the library:
+
+.. code-block:: bash
+
+    python -m build
+
+Install the package in development mode:
+
+.. code-block:: bash
+
+    pip install --editable .
 
 ## Contact
 
